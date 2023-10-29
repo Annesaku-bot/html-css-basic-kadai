@@ -1,0 +1,105 @@
+/* 基本スタイル設定 */
+body, h1, p {
+  margin: 0;
+  padding: 0;
+}
+p, a {
+  font-size: 20px;
+}
+/* headerスタイル */
+header {
+    padding: 20px 0;
+    background-color: rgb(244, 79, 79);
+    text-align: center;
+}
+header h1 {
+    color: rgb(255, 255, 255);
+}
+/* mainスタイル */
+/* main要素全体について、以下のスタイルを設定します。
+   main要素内の余白を上下左右とも10pxにします。*/
+main {
+  padding: 10px;
+}
+/*   id名parentの要素について、以下のスタイルを設定します。
+displayプロパティを使い、id名parentの要素をFlexコンテナにします。
+justify-contentプロパティでFlexboxコンテナの子要素（Flexアイテム）「一番左と一番右のアイテムも含め、均等な間隔で配置する」値を設定します。*/
+#parent {
+  display: flex;
+  justify-content: space-between;
+}
+/*class名contentsの要素について、以下のスタイルを設定します。
+線（太さ3px、実線、色rgb(238, 204, 204)）で要素を囲います。
+幅は親要素の25%にします。プロパティはwidthではなく、flex-basisを使ってください。
+要素内の余白は上下10px、左右15pxにします。
+要素外の余白は上下20px、左右0にします。
+中の要素が中央揃えになるようにします。*/
+.contents {
+  border: 3px solid rgb(238, 204, 204);
+  flex-basis: 25%;
+  padding: 10px 15px;
+  margin: 20px 0;
+  text-align: center;
+}
+/* h2要素について、以下のスタイルを設定します。
+h2要素のフォントサイズを25pxにし、下線（太さ3px、点線、色rgb(236, 122, 122)）を引きます。*/
+.contents h2 {
+  font-size: 25px;
+  border-bottom: 3px dotted rgb(236, 122, 122);
+  position: relative;
+}
+/*h2要素の前に「●」記号を表示します。色はrgb(239, 111, 139)とします。*/
+.contents h2::before {
+  content: '●';
+  color: rgb(239, 111, 139);
+}
+/*class名contents内の二番目のp要素内のテキストの中で一番目の文字にのみ、以下のスタイル設定をします。nth-of-type(n)とfirst-letterを組み合わせると表現できます。
+太字 文字色はrgb(97, 206, 249)二番目のp要素内のテキストの中で一番目の文字とは、見本でいうと「傘」の文字です。*/
+.contents p:nth-of-type(2)::first-letter {
+  font-weight: bold;
+  color: rgb(97, 206, 249);
+}
+/*class名contents内のimg要素に、以下のスタイルを設定します。
+marginは上下10px、左右0
+幅は70%*/
+.contents img {
+  margin: 10px 0;
+  width: 70%;
+}
+/* footerスタイル */
+/*footer要素内にa要素を配置します。a要素のリンク先は、以下とします。
+https://www.sejuku.net/corp/
+a要素の中には、以下のテキストを書き「©SAMURAI WEATHER NEWS」というリンクを作ります。
+©は特殊文字と呼ばれるもので、&で始まり;で終わる&文字;の形で書きます。©記号は&copy;と記述します。詳しくは23章で学びます。
+footer要素内には、以下のスタイルを設定します。
+背景色はrgb(244, 79, 79)にします。中身の要素が中央揃えになるようにします。*/
+footer {
+  background-color: rgb(244, 79, 79);
+  text-align: center;
+}
+/*a要素には、以下のスタイルを設定します。
+文字色はrgb(255, 255, 255)にします。*/
+footer a {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+/*訪問済みリンクの文字色がrgb(193, 234, 251)に変化するようにします。
+マウスカーソルが乗ると文字色がrgb(245, 178, 168)に変化するようにします。*/
+footer a:visited {
+  color: rgb(193, 234, 251);
+}
+footer a:hover {
+  color: rgb(245, 178, 168);
+}
+/* レスポンシブ設定 　縦に並ぶようにするところがポイント*/
+@media screen and (max-width: 768px) {
+  h2 {
+      font-size: 30px;
+  }
+  p {
+      font-size: 25px;
+  }
+  #parent {
+      flex-direction: column;
+  }
+}
